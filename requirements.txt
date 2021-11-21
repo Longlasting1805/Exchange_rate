@@ -1,0 +1,4 @@
+#for api views and logic
+Django==3.2.9
+djangorestframework==3.12.4
+google-currency == 1.0.9
