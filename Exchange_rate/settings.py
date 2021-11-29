@@ -76,10 +76,8 @@ WSGI_APPLICATION = 'Exchange_rate.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': 'postgres://wbpqproyphfdrb:99ad8126e40df3b71ffd18a5f7dab6c2508748e4748228e670402eb5c220f72d@ec2-34-205-'
+               '230-1.compute-1.amazonaws.com:5432/d8dkv5avkbqrpq'
 }
 
 # Password validation
