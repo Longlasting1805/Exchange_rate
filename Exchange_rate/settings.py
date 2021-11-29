@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
+from dj_database_url import parse as db_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,8 +78,7 @@ WSGI_APPLICATION = 'Exchange_rate.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': 'postgres://wbpqproyphfdrb:99ad8126e40df3b71ffd18a5f7dab6c2508748e4748228e670402eb5c220f72d@ec2-34-205-'
-               '230-1.compute-1.amazonaws.com:5432/d8dkv5avkbqrpq'
+    'default': config('HEROKU_POSTGRESQL_PINK_URL', cast=db_url)
 }
 
 # Password validation
