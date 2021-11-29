@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%3budqb_pfb72op360!e_k$6ak(r^lsuc!9%o8bpw9b4y4a1zi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['exchangerate1805.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -77,9 +77,17 @@ WSGI_APPLICATION = 'Exchange_rate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': config('HEROKU_POSTGRESQL_PINK_URL', cast=db_url)
-}
+if bool(int(config('HEROKU_DB'))):
+    DATABASES = {
+        'default': config('HEROKU_POSTGRESQL_PINK_URL', cast=db_url)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
